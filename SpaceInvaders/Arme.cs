@@ -8,13 +8,21 @@ namespace SpaceInvaders
 {
     class Arme
     {
-        private string nom;
-        private int damageMin;
-        private int damageMax;
-        private enum Type{ Direct, Explosif, Guidé};
-        private Type instanceType = new Type();
+        
 
+        public string nom { get; }
+        public int damageMin { get; }
+        public int damageMax { get; }
+        public enum Type { Direct, Explosif, Guidé };
+        public Type instanceType { get; }
 
+        public Arme(string nom, int damageMin, int damageMax, Type instanceType)
+        {
+            this.nom = nom;
+            this.damageMin = damageMin;
+            this.damageMax = damageMax;
+            this.instanceType = instanceType;
+        }
 
     }
 }
