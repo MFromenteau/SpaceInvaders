@@ -9,22 +9,30 @@ namespace SpaceInvaders
     class SpaceInvaders
     {
 
+        public static List<Joueur> allPlayers = new List<Joueur>();
+
         public SpaceInvaders()
         {
-            init();
+            Init();
         }
 
-        void main()
+        public static void Main(string[] args)
         {
             SpaceInvaders si = new SpaceInvaders();
-
+            allPlayers.ForEach(Print);
+            Console.ReadKey();
         }
 
-        private void init()
+        private void Init()
         {
-            Joueur player1 = new Joueur("aa", "aaa", "aaaa");
-            Joueur player2 = new Joueur("bb", "bbb", "bbbb");
-            Joueur player3 = new Joueur("cc", "ccc", "cccc");
+            allPlayers.Add(new Joueur("John", "Doe", "Raph"));
+            allPlayers.Add(new Joueur("Eddie", "Tekken", "Edd"));
+            allPlayers.Add(new Joueur("Charles", "Muntz", "Lerasch"));
+        }
+
+        private static void Print(Joueur player)
+        {
+            Console.WriteLine(player);
         }
     }
 }
