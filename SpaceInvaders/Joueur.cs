@@ -11,14 +11,14 @@ namespace SpaceInvaders
         private string nom;
         private string prenom;
         private string pseudo;
-        private Vaisseau vaisseauJoueur;
+        public Vaisseau vaisseau {get; private set;}
 
         public Joueur(string pNom, string pPrenom, string pPseudo)
         {
             nom = pNom;
             prenom = pPrenom;
             pseudo = pPseudo;
-            vaisseauJoueur = new Vaisseau("Base", 100, 0, 100);
+            vaisseau = new Vaisseau("La_Base", 100, 0, 100);
             formateName();
         }
 
@@ -30,6 +30,11 @@ namespace SpaceInvaders
             prenom = prenom.First().ToString().ToUpper() + prenom.Substring(1, prenom.Length-1);
         }
 
+        public void MonteDans(Vaisseau v)
+        {
+            this.vaisseau = v;
+        }
+
         public override string ToString()
         {
             return (nom + " " + prenom);
@@ -37,12 +42,10 @@ namespace SpaceInvaders
 
         public override bool Equals(Object obj)
         {
-            if(obj is Joueur)
-            {
+            if (obj is Joueur) {
                 return ((Joueur)obj).pseudo == this.pseudo;
             }
             return false;
         }
-        
     }
 }

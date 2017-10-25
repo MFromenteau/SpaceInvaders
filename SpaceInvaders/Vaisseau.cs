@@ -102,7 +102,6 @@ namespace SpaceInvaders
             }
         }
 
-
         public bool EstDetruit()
         {
             return this.ptStruct <= 0;

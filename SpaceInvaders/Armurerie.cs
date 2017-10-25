@@ -18,7 +18,7 @@ namespace SpaceInvaders
 
         private void Init()
         {
-            weaponList.Add("Default");
+            weaponList.Add("L4Z0r");
             weaponList.Add("Bombe");
             weaponList.Add("Missile");
         }

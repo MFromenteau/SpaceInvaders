@@ -18,7 +18,8 @@ namespace SpaceInvaders
 
         public static void Main(string[] args)
         {
-            SpaceInvaders si = new SpaceInvaders();
+            SpaceInvaders G_Joueur = new SpaceInvaders();
+            Armurerie G_Arme = new Armurerie();
             allPlayers.ForEach(Print);
             Console.ReadKey();
         }
