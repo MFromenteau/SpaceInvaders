@@ -10,7 +10,7 @@ namespace SpaceInvaders
     class Armurerie
     {
 
-        private List<string> weaponList = new List<string>();
+        private List<Arme> weaponList = new List<Arme>();
 
         public Armurerie()
         {
@@ -19,12 +19,12 @@ namespace SpaceInvaders
 
         private void Init()
         {
-            weaponList.Add("Default");
-            weaponList.Add("Bombe");
-            weaponList.Add("Missile");
+            weaponList.Add(new Arme("L4Z3R",1,20,Arme.Type.Direct));
+            weaponList.Add(new Arme("B0MB3",10,30,Arme.Type.Explosif));
+            weaponList.Add(new Arme("M1551L3",20,40,Arme.Type.Guidé));
         }
 
-        public List<string> getWeaponList()
+        public List<Arme> getWeaponList()
         {
             return weaponList;
         }
@@ -34,7 +34,7 @@ namespace SpaceInvaders
             string result="";
             foreach (var weapon in weaponList)
             {
-                result = result + " " + weapon;
+                result = result + " " + weapon.nom;
             }
             Console.WriteLine(result);
             return result;
