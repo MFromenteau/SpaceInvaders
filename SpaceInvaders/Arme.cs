@@ -24,5 +24,9 @@ namespace SpaceInvaders
             this.instanceType = instanceType;
         }
 
+        public override string ToString()
+        {
+            return nom+ " ("+damageMin+","+damageMax+") "+instanceType;
+        }
     }
 }
