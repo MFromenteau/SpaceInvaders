@@ -8,8 +8,8 @@ namespace SpaceInvaders
 {
     class Joueur
     {
-        private static string nom;
-        private static string prenom;
+        private string nom;
+        private string prenom;
         private string pseudo;
 
         public Joueur(string pNom, string pPrenom, string pPseudo)
@@ -20,12 +20,12 @@ namespace SpaceInvaders
             formateName();
         }
 
-        private static void formateName()
+        private void formateName()
         {
             nom = nom.ToLower();
-            nom = nom.First().ToString().ToUpper() + nom.Substring(1);
+            nom = nom.First().ToString().ToUpper() + nom.Substring(1, nom.Length-1);
             prenom = prenom.ToLower();
-            prenom = prenom.First().ToString().ToUpper() + nom.Substring(1);
+            prenom = prenom.First().ToString().ToUpper() + prenom.Substring(1, prenom.Length-1);
         }
 
         public override string ToString()
