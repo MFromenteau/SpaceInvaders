@@ -25,9 +25,9 @@ namespace SpaceInvaders
 
         private void Init()
         {
-            allPlayers.Add(new Joueur("aa", "aaa", "aaaa"));
-            allPlayers.Add(new Joueur("bb", "bbb", "bbbb"));
-            allPlayers.Add(new Joueur("cc", "ccc", "cccc"));
+            allPlayers.Add(new Joueur("John", "Doe", "Raph"));
+            allPlayers.Add(new Joueur("Eddie", "Tekken", "Edd"));
+            allPlayers.Add(new Joueur("Charles", "Muntz", "Lerasch"));
         }
 
         private static void Print(Joueur player)
