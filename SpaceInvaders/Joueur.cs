@@ -11,12 +11,14 @@ namespace SpaceInvaders
         private string nom;
         private string prenom;
         private string pseudo;
+        private Vaisseau vaisseauJoueur;
 
         public Joueur(string pNom, string pPrenom, string pPseudo)
         {
             nom = pNom;
             prenom = pPrenom;
             pseudo = pPseudo;
+            vaisseauJoueur = new Vaisseau("Base", 100, 0, 100);
             formateName();
         }
 
