@@ -12,7 +12,7 @@ namespace SpaceInvaders.Vaisseaux
 
         public Dart() : base("Dart", 10, 3, 3)
         { 
-            Equipe(Armurerie.Instance.getWeaponList()[0]);
+            Equipe(Armurerie.Instance.getWeaponList().First(a => a.nom == "L4Z3R"));
         }
 
         public override void Attaque(Vaisseau v)

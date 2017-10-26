@@ -10,7 +10,7 @@ namespace SpaceInvaders.Vaisseaux
     {
         private double coefCheat = 1.5 ;
 
-        public ViperMKII(string nom, int ptStructMax, int ptBouclier, int ptBouclierMax) : base(nom, ptStructMax, ptBouclier, ptBouclierMax)
+        public ViperMKII() : base("ViperMKII", 10, 15, 15)
         {
         }
 
