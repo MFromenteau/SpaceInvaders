@@ -56,7 +56,7 @@ namespace SpaceInvaders
             return str;
         }
 
-        public int pPrintDegatsMoyen()
+        public int PrintDegatsMoyen()
         {
             string str = "Dégats moyen de " + this.nom + " : ";
             int deg = 0;
@@ -106,5 +106,11 @@ namespace SpaceInvaders
         {
             return this.ptStruct <= 0;
         }
+
+        public override string ToString()
+        {
+            return "V[" + this.nom + "] : <3 " + this.ptStruct + "/" + this.ptStructMax + "; <> " + this.ptBouclier + "/" + this.ptBouclierMax;
+        }
+
     }
 }

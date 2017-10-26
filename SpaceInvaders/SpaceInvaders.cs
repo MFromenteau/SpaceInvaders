@@ -9,19 +9,11 @@ namespace SpaceInvaders
     class SpaceInvaders
     {
 
-        public static List<Joueur> allPlayers = new List<Joueur>();
+        public List<Joueur> allPlayers = new List<Joueur>();
 
         public SpaceInvaders()
         {
             Init();
-        }
-
-        public static void Main(string[] args)
-        {
-            SpaceInvaders G_Joueur = new SpaceInvaders();
-            Armurerie G_Arme = new Armurerie();
-            allPlayers.ForEach(Print);
-            Console.ReadKey();
         }
 
         private void Init()
@@ -34,6 +26,28 @@ namespace SpaceInvaders
         private static void Print(Joueur player)
         {
             Console.WriteLine(player);
+        }
+
+
+        
+        public static void Main(string[] args)
+        {
+            SpaceInvaders G_Joueur = new SpaceInvaders();
+            Armurerie G_Arme = new Armurerie();
+            G_Joueur.allPlayers.ForEach(Print);
+            G_Arme.displayAllWeapon();
+
+
+            Console.WriteLine(G_Joueur.allPlayers[0].vaisseau);
+            G_Joueur.allPlayers[0].vaisseau.PrintListeDArme();
+            G_Joueur.allPlayers[0].vaisseau.PrintDegatsMoyen();
+
+            G_Joueur.allPlayers[0].vaisseau.Equipe(G_Arme.getWeaponList()[0]);
+            Console.WriteLine(G_Joueur.allPlayers[0].vaisseau);
+            G_Joueur.allPlayers[0].vaisseau.PrintListeDArme();
+            G_Joueur.allPlayers[0].vaisseau.PrintDegatsMoyen();
+
+
         }
     }
 }
