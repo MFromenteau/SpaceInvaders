@@ -11,8 +11,8 @@ namespace SpaceInvaders
         
 
         public string nom { get; }
-        public int damageMin { get; }
-        public int damageMax { get; }
+        public int damageMin { get; set; }
+        public int damageMax { get; set; }
         public enum Type { Direct, Explosif, Guidé };
         public Type instanceType { get; }
         public int tempsRecharge { get; set; }
@@ -41,6 +41,12 @@ namespace SpaceInvaders
         {
             tempsRecharge = tempsR;
             nbTours = tempsRecharge;
+        }
+
+        public void SetDamage(int min, int max)
+        {
+            damageMin = min;
+            damageMax = max;
         }
 
         public int Tir()
