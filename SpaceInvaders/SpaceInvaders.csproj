@@ -48,7 +48,11 @@
     <Compile Include="Joueur.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpaceInvaders.cs" />
-    <Compile Include="Vaisseau.cs" />
+    <Compile Include="Vaisseaux\Alkesh.cs" />
+    <Compile Include="Vaisseaux\Dart.cs" />
+    <Compile Include="Vaisseaux\Slavel.cs" />
+    <Compile Include="Vaisseaux\Vaisseau.cs" />
+    <Compile Include="Vaisseaux\ViperMKII.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
