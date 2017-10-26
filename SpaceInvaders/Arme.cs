@@ -11,12 +11,12 @@ namespace SpaceInvaders
         
 
         public string nom { get; }
-        public int damageMin { get; set; }
-        public int damageMax { get; set; }
+        public int damageMin { get; private set; }
+        public int damageMax { get; private set; }
         public enum Type { Direct, Explosif, Guide };
         public Type instanceType { get; }
         public double tempsRecharge { get; private set; }
-        public double nbTours { get; set; }
+        public double nbTours { get; private set; }
 
         public Arme(string nom, int damageMin, int damageMax, Type instanceType, double tempsR)
         {
@@ -38,15 +38,9 @@ namespace SpaceInvaders
             nbTours -= i;
         }
 
-        public void SetDamage(int min, int max)
+        public int Tir(int bonus = 1)
         {
-            damageMin = min;
-            damageMax = max;
-        }
-
-        public int Tir()
-        {
-            DecrementeUnTour(1);
+            DecrementeUnTour(bonus);
             if (nbTours > 0)
             {
                 return 0;
