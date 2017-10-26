@@ -10,8 +10,9 @@ namespace SpaceInvaders.Vaisseaux
     {
         private double coefCheat = 1.1;
 
-        public Dart(string nom, int ptStructMax, int ptBouclier, int ptBouclierMax) : base(nom, ptStructMax, ptBouclier, ptBouclierMax)
+        public Dart() : base("Dart", 10, 3, 3)
         {
+            Equipe(Armurerie.Instance.getWeaponList()[0]);
         }
 
         public override void Attaque(Vaisseau v)

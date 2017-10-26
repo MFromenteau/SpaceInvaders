@@ -10,9 +10,15 @@ namespace SpaceInvaders.Vaisseaux
     {
         private double coefCheat = 0.9;
 
-        public Alkesh(string nom, int ptStructMax, int ptBouclier, int ptBouclierMax) : base(nom, ptStructMax, ptBouclier, ptBouclierMax)
+        public Alkesh() : base("Alkesh", 3, 5, 5)
         {
+            Arme newWeapon = Armurerie.Instance.getWeaponList()[2];
+            newWeapon.SetTempsRecharge(1);
+            Equipe(newWeapon);
+            
         }
+
+        
 
         public override void Attaque(Vaisseau v)
         {

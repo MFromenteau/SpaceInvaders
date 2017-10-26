@@ -15,7 +15,7 @@ namespace SpaceInvaders
         public int damageMax { get; }
         public enum Type { Direct, Explosif, Guidé };
         public Type instanceType { get; }
-        public int tempsRecharge { get; }
+        public int tempsRecharge { get; set; }
         public int nbTours { get; set; }
 
         public Arme(string nom, int damageMin, int damageMax, Type instanceType, int tempsR)
@@ -24,8 +24,7 @@ namespace SpaceInvaders
             this.damageMin = damageMin;
             this.damageMax = damageMax;
             this.instanceType = instanceType;
-            tempsRecharge = tempsR;
-            nbTours = tempsRecharge;
+            SetTempsRecharge(tempsR);
         }
 
         public override string ToString()
@@ -36,6 +35,12 @@ namespace SpaceInvaders
         public void DecrementeUnTour()
         {
             nbTours -= 1;
+        }
+
+        public void SetTempsRecharge(int tempsR)
+        {
+            tempsRecharge = tempsR;
+            nbTours = tempsRecharge;
         }
 
         public int Tir()
