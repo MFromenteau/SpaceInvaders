@@ -10,17 +10,21 @@ namespace SpaceInvaders.Vaisseaux
     {
         private double coefCheat = 1.1;
 
-        public Dart(string nom, int ptStructMax, int ptBouclier, int ptBouclierMax) : base(nom, ptStructMax, ptBouclier, ptBouclierMax)
+        public Dart() : base("Dart", 10, 3, 3)
         {
+            Arme newWeapon = Armurerie.Instance.getWeaponList()[0];
+            newWeapon.SetTempsRecharge(1);
+            newWeapon.SetDamage(2, 3);
+            Equipe(newWeapon);
         }
 
         public override void Attaque(Vaisseau v)
         {
-            Random rand = new Random();
             int degats = 0;
 
-            foreach (Arme a in this.armes) {
-                degats += rand.Next(a.damageMin, a.damageMax);
+            foreach (Arme a in this.armes)
+            {
+                degats += a.Tir();
             }
 
             v.Endommage((int)(degats * coefCheat));

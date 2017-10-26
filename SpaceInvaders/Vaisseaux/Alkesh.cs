@@ -10,17 +10,24 @@ namespace SpaceInvaders.Vaisseaux
     {
         private double coefCheat = 0.9;
 
-        public Alkesh(string nom, int ptStructMax, int ptBouclier, int ptBouclierMax) : base(nom, ptStructMax, ptBouclier, ptBouclierMax)
+        public Alkesh() : base("Alkesh", 3, 5, 5)
         {
+            Arme newWeapon = Armurerie.Instance.getWeaponList()[2];
+            newWeapon.SetTempsRecharge(2);
+            newWeapon.SetDamage(3, 3);
+            Equipe(newWeapon);
+            
         }
+
+        
 
         public override void Attaque(Vaisseau v)
         {
-            Random rand = new Random();
             int degats = 0;
 
-            foreach (Arme a in this.armes) {
-                degats += rand.Next(a.damageMin, a.damageMax);
+            foreach (Arme a in this.armes)
+            {
+                degats += a.Tir();
             }
 
             v.Endommage((int)(degats *coefCheat));

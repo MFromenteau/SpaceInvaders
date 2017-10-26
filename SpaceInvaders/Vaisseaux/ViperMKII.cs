@@ -16,11 +16,10 @@ namespace SpaceInvaders.Vaisseaux
 
         public override void Attaque(Vaisseau v)
         {
-            Random rand = new Random();
             int degats = 0;
 
             foreach (Arme a in this.armes) {
-                degats += rand.Next(a.damageMin, a.damageMax);
+                degats += a.Tir();
             }
 
             v.Endommage((int)(degats * coefCheat));
