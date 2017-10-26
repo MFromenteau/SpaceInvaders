@@ -10,9 +10,12 @@ namespace SpaceInvaders
     class Armurerie
     {
 
+        private static readonly Lazy<Armurerie> lazy = new Lazy<Armurerie>(() => new Armurerie());
+        public static Armurerie Instance { get { return lazy.Value; } }
+
         private List<Arme> weaponList = new List<Arme>();
 
-        public Armurerie()
+        private Armurerie()
         {
             Init();
         }
