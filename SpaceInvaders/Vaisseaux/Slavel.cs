@@ -10,8 +10,9 @@ namespace SpaceInvaders.Vaisseaux
     {
         private double coefCheat = 1;
 
-        public Slavel(string nom, int ptStructMax, int ptBouclier, int ptBouclierMax) : base(nom, ptStructMax, ptBouclier, ptBouclierMax)
+        public Slavel() : base("Slavel",30 , 0 , 0)
         {
+
         }
 
         public override void Attaque(Vaisseau v)
