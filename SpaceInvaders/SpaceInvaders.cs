@@ -33,7 +33,7 @@ namespace SpaceInvaders
         public static void Main(string[] args)
         {
             SpaceInvaders G_Joueur = new SpaceInvaders();
-            Armurerie G_Arme = new Armurerie();
+            Armurerie G_Arme = Armurerie.Instance;
             G_Joueur.allPlayers.ForEach(Print);
             G_Arme.displayAllWeapon();
 
@@ -42,7 +42,15 @@ namespace SpaceInvaders
             G_Joueur.allPlayers[0].vaisseau.PrintListeDArme();
             G_Joueur.allPlayers[0].vaisseau.PrintDegatsMoyen();
 
-            G_Joueur.allPlayers[0].vaisseau.Equipe(G_Arme.getWeaponList()[0]);
+            try
+            {
+                G_Joueur.allPlayers[0].vaisseau.Equipe(G_Arme.getWeaponList()[0]);
+            }
+            catch (ArmurerieException ex)
+            {
+                throw ex;
+            }
+            
             Console.WriteLine(G_Joueur.allPlayers[0].vaisseau);
             G_Joueur.allPlayers[0].vaisseau.PrintListeDArme();
             G_Joueur.allPlayers[0].vaisseau.PrintDegatsMoyen();

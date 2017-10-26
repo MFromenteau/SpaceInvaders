@@ -30,7 +30,13 @@ namespace SpaceInvaders
         public void Equipe(Arme a)
         {
             if (armes.Count() > 3)
-                throw new InvalidOperationException();
+                throw new ArmurerieException("Nombre d'arme possible pour le vaisseau excédé");
+
+
+
+
+            if (!Armurerie.Instance.getWeaponList().Contains(a))
+                throw new ArmurerieException("Arme non disponible dans l'armurerie");
 
             this.armes.Add(a);
         }
@@ -38,7 +44,8 @@ namespace SpaceInvaders
         public void Lache(Arme a)
         {
             if (armes.Count() < 0)
-                throw new InvalidOperationException();
+                throw new ArmurerieException("Aucune arme à lacher");
+
 
             this.armes.Remove(a);
         }
