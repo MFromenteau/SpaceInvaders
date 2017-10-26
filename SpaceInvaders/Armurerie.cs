@@ -27,8 +27,7 @@ namespace SpaceInvaders
             weaponList.Add(new Arme("M1551L3",3,3,Arme.Type.Guide,2));
         }
 
-        public List<Arme> getWeaponList()
-        {
+        public List<Arme> getWeaponList(){
             return weaponList;
         }
 
