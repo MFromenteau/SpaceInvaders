@@ -22,9 +22,9 @@ namespace SpaceInvaders
 
         private void Init()
         {
-            weaponList.Add(new Arme("L4Z3R",1,20,Arme.Type.Direct));
-            weaponList.Add(new Arme("B0MB3",10,30,Arme.Type.Explosif));
-            weaponList.Add(new Arme("M1551L3",20,40,Arme.Type.Guidé));
+            weaponList.Add(new Arme("L4Z3R",2,3,Arme.Type.Direct,1));
+            weaponList.Add(new Arme("B0MB3",1,8,Arme.Type.Explosif,1.5));
+            weaponList.Add(new Arme("M1551L3",3,3,Arme.Type.Guide,2));
         }
 
         public List<Arme> getWeaponList()

@@ -13,18 +13,19 @@ namespace SpaceInvaders
         public string nom { get; }
         public int damageMin { get; set; }
         public int damageMax { get; set; }
-        public enum Type { Direct, Explosif, Guidé };
+        public enum Type { Direct, Explosif, Guide };
         public Type instanceType { get; }
-        public int tempsRecharge { get; set; }
-        public int nbTours { get; set; }
+        public double tempsRecharge { get; private set; }
+        public double nbTours { get; set; }
 
-        public Arme(string nom, int damageMin, int damageMax, Type instanceType, int tempsR)
+        public Arme(string nom, int damageMin, int damageMax, Type instanceType, double tempsR)
         {
             this.nom = nom;
             this.damageMin = damageMin;
             this.damageMax = damageMax;
             this.instanceType = instanceType;
-            SetTempsRecharge(tempsR);
+            tempsRecharge = tempsR;
+            nbTours = tempsRecharge;
         }
 
         public override string ToString()
@@ -32,15 +33,9 @@ namespace SpaceInvaders
             return nom+ " ("+damageMin+","+damageMax+") "+instanceType;
         }
 
-        public void DecrementeUnTour()
+        public void DecrementeUnTour(double i)
         {
-            nbTours -= 1;
-        }
-
-        public void SetTempsRecharge(int tempsR)
-        {
-            tempsRecharge = tempsR;
-            nbTours = tempsRecharge;
+            nbTours -= i;
         }
 
         public void SetDamage(int min, int max)
@@ -51,12 +46,13 @@ namespace SpaceInvaders
 
         public int Tir()
         {
-            DecrementeUnTour();
+            DecrementeUnTour(1);
             if (nbTours > 0)
             {
                 return 0;
             }
             Random rand = new Random();
+            nbTours = tempsRecharge;
             switch (instanceType)
             {
                 case Type.Direct:
@@ -67,7 +63,7 @@ namespace SpaceInvaders
                     if (rand.Next(0, 40) < 10)
                         return 0;
                     break;
-                case Type.Guidé:
+                case Type.Guide:
                     return damageMin;
                 default:
                     break;

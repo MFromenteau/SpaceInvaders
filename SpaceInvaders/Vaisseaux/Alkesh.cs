@@ -12,11 +12,7 @@ namespace SpaceInvaders.Vaisseaux
 
         public Alkesh() : base("Alkesh", 3, 5, 5)
         {
-            Arme newWeapon = Armurerie.Instance.getWeaponList()[2];
-            newWeapon.SetTempsRecharge(2);
-            newWeapon.SetDamage(3, 3);
-            Equipe(newWeapon);
-            
+            Equipe(Armurerie.Instance.getWeaponList()[0]);
         }
 
         

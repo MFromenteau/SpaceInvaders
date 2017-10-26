@@ -12,6 +12,7 @@ namespace SpaceInvaders.Vaisseaux
 
         public Slavel(string nom, int ptStructMax, int ptBouclier, int ptBouclierMax) : base(nom, ptStructMax, ptBouclier, ptBouclierMax)
         {
+            Equipe(Armurerie.Instance.getWeaponList()[1]);
         }
 
         public override void Attaque(Vaisseau v)
