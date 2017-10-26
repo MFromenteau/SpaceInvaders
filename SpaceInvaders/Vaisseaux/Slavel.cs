@@ -12,11 +12,7 @@ namespace SpaceInvaders.Vaisseaux
 
         public Slavel() : base("Slavel",30 , 0 , 0)
         {
-<<<<<<< HEAD
             Equipe(Armurerie.Instance.getWeaponList()[1]);
-=======
-
->>>>>>> master
         }
 
         public override void Attaque(Vaisseau v)
