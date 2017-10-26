@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SpaceInvaders
 {
 
-    class Vaisseau
+    abstract class Vaisseau
     {
         public string cul;
         public string nom { get; }
@@ -26,6 +26,8 @@ namespace SpaceInvaders
             this.ptBouclierMax = ptBouclierMax;
             this.armes = new List<Arme>();
         }
+
+        public abstract void Attaque(Vaisseau v);
 
         public void Equipe(Arme a)
         {
