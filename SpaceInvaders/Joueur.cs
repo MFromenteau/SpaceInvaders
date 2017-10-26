@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SpaceInvaders.Vaisseaux;
 
 namespace SpaceInvaders
 {
@@ -18,7 +19,7 @@ namespace SpaceInvaders
             nom = pNom;
             prenom = pPrenom;
             pseudo = pPseudo;
-            vaisseau = new Vaisseau("La_Base", 100, 0, 100);
+            vaisseau = new ViperMKII("La_Base_un_peu_mieux", 100, 0, 100);
             formateName();
         }
 
