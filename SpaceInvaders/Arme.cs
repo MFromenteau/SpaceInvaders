@@ -8,7 +8,7 @@ namespace SpaceInvaders
 {
     class Arme
     {
-        
+
 
         public string nom { get; }
         public int damageMin { get; private set; }

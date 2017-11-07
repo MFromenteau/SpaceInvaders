@@ -97,7 +97,24 @@ namespace SpaceInvaders
         {
             if(dicoArme.Count > 0)
             {
+                foreach (KeyValuePair<String, int> arme in dicoArme)
+                {
+                    int damageMax;
+                    int damageMin;
 
+                    if (arme.Key.Length > arme.Value)
+                    {
+                        damageMax = arme.Key.Length;
+                        damageMin = arme.Value;
+                    }
+                    else
+                    {
+                        damageMax = arme.Value;
+                        damageMin = arme.Key.Length;
+                    }
+                    
+                    Armurerie.Instance.AddWeaponToList(new Arme(arme.Key, damageMin, damageMax,,1));
+                }
             }
         }
     }
