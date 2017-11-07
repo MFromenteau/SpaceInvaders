@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SpaceInvaders.Vaisseaux;
 
 namespace SpaceInvaders
 {
     class SpaceInvaders
     {
 
-        public List<Joueur> allPlayers = new List<Joueur>();
+        public List<Joueur> allPlayers { get; private set; } = new List<Joueur>();
+        public List<Vaisseau> allEnnemies { get; private set; } = new List<Vaisseau>();
+        public List<IAptitude> allAptEnnemies { get; private set; } = new List<IAptitude>();
+        private static readonly Lazy<SpaceInvaders> lazy = new Lazy<SpaceInvaders>(() => new SpaceInvaders());
+        public static SpaceInvaders Instance { get { return lazy.Value; } }
 
         public SpaceInvaders()
         {
@@ -19,43 +24,80 @@ namespace SpaceInvaders
         private void Init()
         {
             allPlayers.Add(new Joueur("John", "Doe", "Raph"));
-            allPlayers.Add(new Joueur("Eddie", "Tekken", "Edd"));
-            allPlayers.Add(new Joueur("Charles", "Muntz", "Lerasch"));
+            AddEnnemyShip(new Slavel());
+            AddEnnemyShip(new Tardis());
+            AddEnnemyShip(new Dart());
+            AddEnnemyShip(new Assault());
+            AddEnnemyShip(new Alkesh());
+            AddEnnemyShip(new ViperMKII());
         }
 
-        private static void Print(Joueur player)
+        public void AddEnnemyShip(Vaisseau v)
         {
-            Console.WriteLine(player);
+            if (v is IAptitude) {
+                allAptEnnemies.Add((IAptitude)v);
+            }
+            allEnnemies.Add(v);
         }
 
-
-        
-        public static void Main(string[] args)
+        public int CountAlive(List<Vaisseau> lv)
         {
-            SpaceInvaders G_Joueur = new SpaceInvaders();
-            Armurerie G_Arme = Armurerie.Instance;
-            G_Joueur.allPlayers.ForEach(Print);
-            G_Arme.displayAllWeapon();
+            int count = 0;
 
-
-            Console.WriteLine(G_Joueur.allPlayers[0].vaisseau);
-            G_Joueur.allPlayers[0].vaisseau.PrintListeDArme();
-            G_Joueur.allPlayers[0].vaisseau.PrintDegatsMoyen();
-
-            try
-            {
-                G_Joueur.allPlayers[0].vaisseau.Equipe(G_Arme.getWeaponList()[0]);
+            foreach (Vaisseau v in lv) {
+                if(!v.EstDetruit())
+                    count++;
             }
-            catch (ArmurerieException ex)
-            {
-                throw ex;
+
+            return count;
+        }
+
+        //main game 0 if continue, 1 if lose, 2 if win
+        public int Tour()
+        {
+            //APTITUDE
+            foreach (IAptitude ennemy in allAptEnnemies) {
+                    ennemy.Utilise(allEnnemies);
             }
+
+            //ded ?
+            if (allPlayers[0].vaisseau.EstDetruit())
+                return 1;
+
+            //FIGHT
+            int index = 0;
+            Random rnd = new Random();
+
+            foreach (Vaisseau v in allEnnemies) {
+                index++;
+
+                //do not treat already dead ship
+                if (v.EstDetruit()) {
+                    break;
+                }
+                
+                //Who shoots first ?
+                if (rnd.Next(0, 100) / 100 < index / CountAlive(allEnnemies)) 
+                {
+                    //player shoots first
+                    allPlayers[0].vaisseau.Attaque(v);
+                    v.Attaque(allPlayers[0].vaisseau);
+                } else {
+                    //ennemy shoots first
+                    v.Attaque(allPlayers[0].vaisseau);
+                    allPlayers[0].vaisseau.Attaque(v);
+                }
+
+                //ded ?
+                if (allPlayers[0].vaisseau.EstDetruit())
+                    return 1;
+                
+            }
+
+            if (allEnnemies.Count() == 0)
+                return 2;
             
-            Console.WriteLine(G_Joueur.allPlayers[0].vaisseau);
-            G_Joueur.allPlayers[0].vaisseau.PrintListeDArme();
-            G_Joueur.allPlayers[0].vaisseau.PrintDegatsMoyen();
-
-
+            return 0;
         }
     }
 }

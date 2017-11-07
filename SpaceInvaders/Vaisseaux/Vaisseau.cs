@@ -29,13 +29,14 @@ namespace SpaceInvaders
 
         public abstract void Attaque(Vaisseau v);
 
-        public void Equipe(Arme a)
+
+        virtual public void Equipe(Arme a)
         {
+            if (EstDetruit())
+                return;
+
             if (armes.Count() > 3)
                 throw new ArmurerieException("Nombre d'arme possible pour le vaisseau excédé");
-
-
-
 
             if (!Armurerie.Instance.getWeaponList().Contains(a))
                 throw new ArmurerieException("Arme non disponible dans l'armurerie");
@@ -45,6 +46,9 @@ namespace SpaceInvaders
 
         public void Lache(Arme a)
         {
+            if (EstDetruit())
+                return;
+
             if (armes.Count() < 0)
                 throw new ArmurerieException("Aucune arme à lacher");
 
@@ -81,6 +85,9 @@ namespace SpaceInvaders
 
         public void Endommage(int pt)
         {
+            if (EstDetruit())
+                return;
+
             this.ptBouclier -= pt;
 
             if (this.ptBouclier < 0) {
@@ -91,8 +98,8 @@ namespace SpaceInvaders
 
         public void Protege(int pt)
         {
-            if (this.EstDetruit())
-                throw new InvalidOperationException();
+            if (EstDetruit())
+                return;
 
             this.ptBouclier += pt;
             if (this.ptBouclier >= this.ptBouclierMax) {
@@ -102,8 +109,8 @@ namespace SpaceInvaders
 
         public void Repare(int pt)
         {
-            if (this.EstDetruit())
-                throw new InvalidOperationException();
+            if (EstDetruit())
+                return;
 
             this.ptStruct += pt;
             if (this.ptStruct >= this.ptStructMax) {

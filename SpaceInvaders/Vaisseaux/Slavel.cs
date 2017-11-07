@@ -17,6 +17,9 @@ namespace SpaceInvaders.Vaisseaux
 
         public override void Attaque(Vaisseau v)
         {
+            if (EstDetruit())
+                return;
+
             int degats = 0;
 
             foreach (Arme a in this.armes)

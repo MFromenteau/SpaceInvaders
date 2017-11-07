@@ -19,7 +19,7 @@ namespace SpaceInvaders
             nom = pNom;
             prenom = pPrenom;
             pseudo = pPseudo;
-            vaisseau = new ViperMKII("La_Base_un_peu_mieux", 100, 0, 100);
+            vaisseau = new ViperMKII();
             formateName();
         }
 

@@ -11,19 +11,22 @@ namespace SpaceInvaders.Vaisseaux
         private double coefCheat = 1.1;
 
         public Dart() : base("Dart", 10, 3, 3)
-        {
-            Equipe(Armurerie.Instance.getWeaponList().First((a) => a.nom == "L4Z3R"));
+        { 
+            Equipe(Armurerie.Instance.getWeaponList().First(a => a.nom == "L4Z3R"));
         }
 
         public override void Attaque(Vaisseau v)
         {
-            int degats = 0;
-            int bonus = 1;
+            if (EstDetruit())
+                return;
 
+            int degats = 0;
+            double bonus = 1;
+     
             foreach (Arme a in this.armes)
             {
                 if (a.instanceType == Arme.Type.Direct)
-                    bonus = a.tempsRecharge;
+                    bonus = (int)a.tempsRecharge;
                 degats += a.Tir();
             }
 
