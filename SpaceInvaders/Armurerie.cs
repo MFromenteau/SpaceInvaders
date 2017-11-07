@@ -44,5 +44,10 @@ namespace SpaceInvaders
             Console.WriteLine(result);
             return result;
         }
+
+        public void AddWeaponToList(Arme weapon)
+        {
+            weaponList.Add(weapon);
+        }
     }
 }
