@@ -19,6 +19,7 @@ namespace SpaceInvaders.Vaisseaux
             foreach (Arme a in this.armes) {
                 degats += a.Tir();
             }
+            Console.WriteLine(this + (" -" + degats + "-> ").PadRight(7, ' ') + v);
 
             v.Endommage((int)(degats));
         }
@@ -33,7 +34,8 @@ namespace SpaceInvaders.Vaisseaux
             if (EstDetruit())
                 return listEnnemies;
 
-            if (listEnnemies.IndexOf(this) == 0) {
+            if (SpaceInvaders.CountAlive(listEnnemies) == 0) {
+                Console.WriteLine("## BTOOOM !! ##");
                 SpaceInvaders.Instance.allPlayers[0].vaisseau.Endommage(10);
                 this.Endommage(15);
             }

@@ -38,7 +38,7 @@ namespace SpaceInvaders
             int res = 0;
             while ((res = G_Joueur.Tour()) == 0) ;
             
-            Console.WriteLine("You" + ((res == 1) ? "Lost." : "Won !!"));
+            Console.WriteLine("  You" + ((res == 1) ? " Lost." : " Won !!"));
         }
     }
 }

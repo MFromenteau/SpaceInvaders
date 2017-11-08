@@ -8,8 +8,6 @@ namespace SpaceInvaders.Vaisseaux
 {
     class Alkesh : Vaisseau
     {
-        private double coefCheat = 0.9;
-
         public Alkesh() : base("Alkesh", 3, 5, 5)
         {
             Equipe(Armurerie.Instance.getWeaponList().First((a) =>  a.nom == "Torpille"));
@@ -19,6 +17,7 @@ namespace SpaceInvaders.Vaisseaux
 
         public override void Attaque(Vaisseau v)
         {
+            
             if (EstDetruit())
                 return;
 
@@ -29,7 +28,9 @@ namespace SpaceInvaders.Vaisseaux
                 degats += a.Tir();
             }
 
-            v.Endommage((int)(degats *coefCheat));
+            Console.WriteLine(this + (" -" + degats + "-> ").PadRight(7, ' ') + v);
+
+            v.Endommage((int)(degats));
         }
     }
 }

@@ -8,7 +8,6 @@ namespace SpaceInvaders.Vaisseaux
 {
     class Dart : Vaisseau
     {
-        private double coefCheat = 1.1;
 
         public Dart() : base("Dart", 10, 3, 3)
         { 
@@ -29,8 +28,9 @@ namespace SpaceInvaders.Vaisseaux
                     bonus = (int)a.tempsRecharge;
                 degats += a.Tir();
             }
+            Console.WriteLine(this + (" -" + degats + "-> ").PadRight(7, ' ') + v);
 
-            v.Endommage((int)(degats * coefCheat));
+            v.Endommage((int)(degats));
         }
     }
 }

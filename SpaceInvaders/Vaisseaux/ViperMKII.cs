@@ -8,9 +8,7 @@ namespace SpaceInvaders.Vaisseaux
 {
     class ViperMKII : Vaisseau
     {
-        private double coefCheat = 1.5 ;
-
-        public ViperMKII() : base("ViperMKII", 10, 15, 15)
+        public ViperMKII() : base("ViperMKII", 20, 15, 15)
         {
             Equipe(Armurerie.Instance.getWeaponList().First(a => a.nom == "Mitrailleuse"));
             Equipe(Armurerie.Instance.getWeaponList().First(a => a.nom == "EMG"));
@@ -34,7 +32,17 @@ namespace SpaceInvaders.Vaisseaux
 
             degats = armes[rnd.Next(armes.Count)].Tir();
 
-            v.Endommage((int)(degats * coefCheat));
+            Console.WriteLine(this + (" -" + degats + "-> ").PadRight(7, ' ') + v);
+
+            v.Endommage((int)(degats));
+        }
+
+        public override string ToString()
+        {
+            if (EstDetruit())
+                return (("V[" + this.nom).PadRight(15, ' ') + "] : DESTROYED").PadRight(40, ' ');
+
+            return (("[" + this.nom).PadRight(11, ' ') + "]:H" + (this.ptStruct + "/" + this.ptStructMax).PadRight(5, ' ') + "||B" + (this.ptBouclier + "/" + this.ptBouclierMax).PadRight(5, ' ')).PadRight(40, ' ');
         }
     }
 }

@@ -8,7 +8,6 @@ namespace SpaceInvaders.Vaisseaux
 {
     class Slavel : Vaisseau
     {
-        private double coefCheat = 1;
 
         public Slavel() : base("Slavel",30 , 0 , 0)
         {
@@ -26,8 +25,9 @@ namespace SpaceInvaders.Vaisseaux
             {
                 degats += a.Tir();
             }
+            Console.WriteLine(this + (" -" + degats + "-> ").PadRight(7, ' ') + v);
 
-            v.Endommage((int)(degats * coefCheat));
+            v.Endommage((int)(degats));
         }
     }
 }

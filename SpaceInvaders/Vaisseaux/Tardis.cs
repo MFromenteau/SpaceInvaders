@@ -19,6 +19,7 @@ namespace SpaceInvaders.Vaisseaux
             foreach (Arme a in this.armes) {
                 degats += a.Tir();
             }
+            Console.WriteLine(this + (" -"+degats+"-> ").PadRight(7,' ') + v);
 
             v.Endommage((int)(degats));
         }

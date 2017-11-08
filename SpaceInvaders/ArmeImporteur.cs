@@ -113,7 +113,7 @@ namespace SpaceInvaders
                         damageMin = arme.Key.Length;
                     }
                     
-                    Armurerie.Instance.AddWeaponToList(new Arme(arme.Key, damageMin, damageMax,,1));
+                    //Armurerie.Instance.AddWeaponToList(new Arme(arme.Key, damageMin, damageMax,,1));
                 }
             }
         }

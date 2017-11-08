@@ -28,6 +28,7 @@ namespace SpaceInvaders
             weaponList.Add(new Arme("Mitrailleuse", 2,3,Arme.Type.Direct,1));
             weaponList.Add(new Arme("EMG", 1, 7, Arme.Type.Explosif, 1.5));
             weaponList.Add(new Arme("Missile", 4, 100, Arme.Type.Guide, 4));
+            weaponList.Add(new Arme("cheat", 6, 100, Arme.Type.Direct, 0));
         }
 
         public List<Arme> getWeaponList(){

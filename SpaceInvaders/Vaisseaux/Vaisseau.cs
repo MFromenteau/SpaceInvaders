@@ -9,12 +9,11 @@ namespace SpaceInvaders
 
     abstract class Vaisseau
     {
-        public string cul;
         public string nom { get; }
         public int ptBouclier { get; private set; }
         public int ptStruct { get; private set; }
-        private int ptStructMax { get; }
-        private int ptBouclierMax { get; }
+        protected int ptStructMax { get; }
+        protected int ptBouclierMax { get; }
         public List<Arme> armes { get; }
 
         public Vaisseau(string nom, int ptStructMax, int ptBouclier, int ptBouclierMax)
@@ -123,9 +122,17 @@ namespace SpaceInvaders
             return this.ptStruct <= 0;
         }
 
+        public string SmallDesc()
+        {
+            return (nom.Substring(0,2));
+        }
+
         public override string ToString()
         {
-            return "V[" + this.nom + "] : <3 " + this.ptStruct + "/" + this.ptStructMax + "; <> " + this.ptBouclier + "/" + this.ptBouclierMax;
+            if (EstDetruit())
+                return (("V[" + this.nom).PadRight(15, ' ') + "] : DESTROYED").PadRight(40, ' ');
+
+            return (("[" + this.nom ).PadRight(11, ' ') + "]:H" + (this.ptStruct + "/" + this.ptStructMax).PadRight(5,' ') + "||B" + (this.ptBouclier + "/" + this.ptBouclierMax).PadRight(5, ' ')).PadRight(40,' ');
         }
 
     }
