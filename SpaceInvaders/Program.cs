@@ -15,6 +15,11 @@ namespace SpaceInvaders
 
         public static void Main(string[] args)
         {
+
+            using (Menu menu = new Menu())
+            {
+                menu.ShowDialog();
+            }
             SpaceInvaders G_Joueur = SpaceInvaders.Instance;
             Armurerie G_Arme = Armurerie.Instance;
             G_Joueur.allPlayers.ForEach(Print);
