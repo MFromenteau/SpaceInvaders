@@ -50,5 +50,18 @@ namespace SpaceInvaders
         {
             weaponList.Add(weapon);
         }
+
+        public List<Arme> GetFiveBestAverageDamage()
+        {
+            List<Arme> bestAverageDamage = weaponList;
+            bestAverageDamage.Sort(new ArmeAverageDamageFirst());
+            bestAverageDamage = bestAverageDamage.GetRange(0, 5);
+            return bestAverageDamage;
+        }
+
+        public List<Arme> GetFiveBestDamageMin()
+        {
+            return weaponList.OrderBy(o => o.damageMin).ToList();
+        }
     }
 }
