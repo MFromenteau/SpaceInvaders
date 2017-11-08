@@ -64,5 +64,11 @@ namespace SpaceInvaders
             }
             return rand.Next(damageMin, damageMax);
         }
+
+        public double AverageDamage()
+        {
+            double avg = (damageMax + damageMin) / 2;
+            return Math.Round(avg,2);
+        }
     }
 }
