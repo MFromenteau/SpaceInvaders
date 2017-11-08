@@ -8,7 +8,7 @@ namespace SpaceInvaders.Vaisseaux
 {
     class ViperMKII : Vaisseau
     {
-        public ViperMKII() : base("ViperMKII", 20, 15, 15)
+        public ViperMKII() : base("ViperMKII", 50, 15, 15)
         {
             Equipe(Armurerie.Instance.getWeaponList().First(a => a.nom == "Mitrailleuse"));
             Equipe(Armurerie.Instance.getWeaponList().First(a => a.nom == "EMG"));
