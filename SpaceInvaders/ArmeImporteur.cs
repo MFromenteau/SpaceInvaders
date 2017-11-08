@@ -112,8 +112,9 @@ namespace SpaceInvaders
                         damageMax = arme.Value;
                         damageMin = arme.Key.Length;
                     }
-                    
-                    Armurerie.Instance.AddWeaponToList(new Arme(arme.Key, damageMin, damageMax,,1));
+                    Random rnd = new Random();
+                    var allType = Enum.GetValues(typeof(Arme.Type)).Cast<Arme.Type>().ToList();
+                    Armurerie.Instance.AddWeaponToList(new Arme(arme.Key, damageMin, damageMax, allType[rnd.Next(allType.ToArray().Length)], 1.0));
                 }
             }
         }
